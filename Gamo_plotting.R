@@ -496,7 +496,7 @@ colnames(KAO_counts) = KAO[KAO$CLASS != "00_CORE",3]
 
 #Now we do some basic plotting.
 
-par(mfrow = c(2,2))
+par(mfrow = c(1,3))
 
 plot(as.numeric(CHA_counts$Poaceae), as.numeric(CHA_details$depth)*-1, type = "l")
 lines(as.numeric(CHA_counts$Cyperaceae), CHA_details$depth, lty = 2)
@@ -517,7 +517,7 @@ KAO_sum = apply(KAO_counts, 1, sum)
 
 #Concentrations
 
-par(mfrow = c(2,2))
+par(mfrow = c(1,3))
 
 CHA_conc = ((CHA_details$LYCO_mean*CHA_details$LYCO_add)/CHA_details$weight)*(CHA_sum/CHA_details$LYCO)
 CHO_conc = ((CHO_details$LYCO_mean*CHO_details$LYCO_add)/CHO_details$weight)*(CHO_sum/CHO_details$LYCO)
