@@ -478,18 +478,18 @@ colnames(KAO_details) = KAO[1:6,3]
 
 #Isolate counts
 
-CHA_counts = as.data.frame(t(CHA[CHA$CLASS != "00_CORE", 4:ncol(CHA)]))
-CHO_counts = as.data.frame(t(CHO[CHO$CLASS != "00_CORE", 4:ncol(CHO)]))
-KAO_counts = as.data.frame(t(KAO[KAO$CLASS != "00_CORE", 4:ncol(KAO)]))
+CHA_counts = as.data.frame(t(CHA[CHA$CLASS != "00_CORE" & CHA$CLASS != "01_PTERID", 4:ncol(CHA)]))
+CHO_counts = as.data.frame(t(CHO[CHO$CLASS != "00_CORE" & CHO$CLASS != "01_PTERID", 4:ncol(CHO)]))
+KAO_counts = as.data.frame(t(KAO[KAO$CLASS != "00_CORE" & KAO$CLASS != "01_PTERID", 4:ncol(KAO)]))
 
 #Add new headers
 
-colnames(CHA_counts) = CHA[CHA$CLASS != "00_CORE",3]
-colnames(CHO_counts) = CHO[CHO$CLASS != "00_CORE",3]
-colnames(KAO_counts) = KAO[KAO$CLASS != "00_CORE",3]
+colnames(CHA_counts) = CHA[CHA$CLASS != "00_CORE" & CHA$CLASS != "01_PTERID" ,3]
+colnames(CHO_counts) = CHO[CHO$CLASS != "00_CORE" & CHO$CLASS != "01_PTERID" ,3]
+colnames(KAO_counts) = KAO[KAO$CLASS != "00_CORE" & KAO$CLASS != "01_PTERID" ,3]
   
 ##Cleanup stupid headers
-#
+
 #CHA_counts = CHA_counts[-1,]
 #CHO_counts = CHO_counts[-1,]
 #KAO_counts = KAO_counts[-1,]
@@ -523,9 +523,18 @@ CHA_conc = ((CHA_details$LYCO_mean*CHA_details$LYCO_add)/CHA_details$weight)*(CH
 CHO_conc = ((CHO_details$LYCO_mean*CHO_details$LYCO_add)/CHO_details$weight)*(CHO_sum/CHO_details$LYCO)
 KAO_conc = ((KAO_details$LYCO_mean*KAO_details$LYCO_add)/KAO_details$weight)*(KAO_sum/KAO_details$LYCO)
 
-plot(CHA_conc, CHA_details$depth*-1, type = "l")
-plot(CHO_conc, CHO_details$depth*-1, type = "l")
-plot(KAO_conc, KAO_details$depth*-1, type = "l")
+plot(CHA_conc, CHA_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentrations per gram")
+plot(CHO_conc, CHO_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentrations per gram")
+plot(KAO_conc, KAO_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentrations per gram")
 
 par(mfrow = c(1,1))
 
+#Barplots of pollen sums
+
+par(mfrow = c(1,3))
+
+barplot(rev(CHA_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
+barplot(rev(CHO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
+barplot(rev(KAO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
+
+par(mfrow = c(1,1))
