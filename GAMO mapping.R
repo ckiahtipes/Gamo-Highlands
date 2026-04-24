@@ -22,6 +22,8 @@ lon = c(37.5, 37.8)
 
 if(!file.exists("SRTM/elevation/ETH_elv_msk.tif")){
   ETHP_dem <- elevation_30s(country="ETHIOPIA", path = "SRTM/")
+} else {
+  ETHP_dem <-read_sf("SRTM/elevation/ETH_elv_msk.tif") #Doesn't work but structure is right.
 }
 
 if(!file.exists("SRTM/elevation/srtm_44_11.tif")){
