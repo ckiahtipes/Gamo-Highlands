@@ -23,11 +23,15 @@ lon = c(37.5, 37.8)
 if(!file.exists("SRTM/elevation/ETH_elv_msk.tif")){
   ETHP_dem <- elevation_30s(country="ETHIOPIA", path = "SRTM/")
 } else {
-  ETHP_dem <-read_sf("SRTM/elevation/ETH_elv_msk.tif") #Doesn't work but structure is right.
+  ETHP_pth <- "SRTM/elevation/ETH_elv_msk.tif"
+  ETHP_dem <- rast(ETHP_pth) 
 }
 
 if(!file.exists("SRTM/elevation/srtm_44_11.tif")){
-  GAMO_dem <- elevation_3s(lon = lon[35], lat = lat[5], path = "SRTM/")
+  GAMO_dem <- elevation_3s(lon = 35, lat = 10, path = "SRTM/")
+} else {
+  GAMO_pth <- "SRTM/elevation/srtm_44_11.tif"
+  GAMO_dem <- rast(GAMO_pth) 
 }
 
 par(mfrow = c(1,2))
