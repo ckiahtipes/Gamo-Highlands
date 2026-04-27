@@ -519,9 +519,9 @@ KAO_sum = apply(KAO_counts, 1, sum)
 
 par(mfrow = c(1,3))
 
-CHA_conc = ((CHA_details$LYCO_mean*CHA_details$LYCO_add)/CHA_details$weight)*(CHA_sum/CHA_details$LYCO)
-CHO_conc = ((CHO_details$LYCO_mean*CHO_details$LYCO_add)/CHO_details$weight)*(CHO_sum/CHO_details$LYCO)
-KAO_conc = ((KAO_details$LYCO_mean*KAO_details$LYCO_add)/KAO_details$weight)*(KAO_sum/KAO_details$LYCO)
+CHA_conc = ((CHA_details$LYCO_mean*CHA_details$LYCO_add)/CHA_details$weight)*(CHA_sum/CHA_details$LYCO_n)
+CHO_conc = ((CHO_details$LYCO_mean*CHO_details$LYCO_add)/CHO_details$weight)*(CHO_sum/CHO_details$LYCO_n)
+KAO_conc = ((KAO_details$LYCO_mean*KAO_details$LYCO_add)/KAO_details$weight)*(KAO_sum/KAO_details$LYCO_n)
 
 plot(CHA_conc, CHA_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentrations per gram")
 plot(CHO_conc, CHO_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentrations per gram")

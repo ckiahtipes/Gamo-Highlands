@@ -41,27 +41,62 @@ ETHP_box = st_bbox(ETHP_dem)
 
 #Let's pull some of the landcover data
 
-ETHP_tree = landcover("trees", path = "LAND/")
-ETHP_grss = landcover("grassland", path = "LAND/")
-ETHP_crop = landcover("cropland", path = "LAND/")
+#Trees!
 
-ETHP_tree = crop(ETHP_tree, ETHP_dem)
+if(!file.exists("LAND/landuse/WorldCover_trees_30s.tif")){
+  ETHP_tree = landcover("trees", path = "LAND/")
+} else {
+  tree_path <- "LAND/landuse/WorldCover_trees_30s.tif"
+  ETHP_tree <- rast(tree_path) 
+}
 
-ESAtrsh_col=c(NA,"#6c9575")
-ESAgrcp_col=c(NA,"#ffd731")
-ESAcrop_col=c(NA,"darkred")
+#Grassland!
+
+if(!file.exists("LAND/landuse/WorldCover_grassland_30s.tif")){
+  ETHP_grss = landcover("grassland", path = "LAND/")
+} else {
+  grass_path <- "LAND/landuse/WorldCover_grassland_30s.tif"
+  ETHP_grss <- rast(grass_path) 
+}
+
+#Cropland!
+
+if(!file.exists("LAND/landuse/WorldCover_cropland_30s.tif")){
+  ETHP_crop = landcover("cropland", path = "LAND/")
+} else {
+  crop_path <- "LAND/landuse/WorldCover_cropland_30s.tif"
+  ETHP_crop <- rast(crop_path) 
+}
+
+#Crop around Ethopia
+
+ETHP_tree = crop(ETHP_tree, ETHP_dem, mask = TRUE)
+ETHP_tree[ETHP_tree < 0.1] <- NA
+
+ETHP_grss = crop(ETHP_grss, ETHP_dem, mask = TRUE)
+ETHP_grss[ETHP_grss < 0.1] <- NA
+
+ETHP_crop = crop(ETHP_crop, ETHP_dem, mask = TRUE)
+ETHP_crop[ETHP_crop < 0.1] <- NA
+
+ESAtrsh_col=c("#6c9575")
+ESAgrcp_col=c("#ffd731")
+ESAcrop_col=c("darkred")
 
 par(mfrow = c(1,2))
 
-plot(0, xlim = c(32, 48), ylim = c(3, 15), pch = NA, axes = FALSE, ann = FALSE)
-plot(ETHP_tree, add = TRUE, alpha = 0.8, col = ESAtrsh_col, legend = FALSE)
-plot(ETHP_grss, add = TRUE, alpha = 0.8, col = ESAgrcp_col, legend = FALSE)
-plot(ETHP_crop, add = TRUE, alpha = 0.8, col = ESAcrop_col, legend = FALSE)
-plot(ETHP_dem, col = gray.colors(4661), main = "Ethiopia")
+plot(ETHP_dem, col = gray.colors(4661), main = "Ethiopia", legend = FALSE)
+plot(ETHP_tree, add = TRUE, col = ESAtrsh_col, legend = FALSE, alpha = 0.5)
+plot(ETHP_grss, add = TRUE, col = ESAgrcp_col, legend = FALSE, alpha = 0.5)
+plot(ETHP_crop, add = TRUE, col = ESAcrop_col, legend = FALSE, alpha = 0.5)
 
-polygon(c(lon,rev(lon)),c(rep(lat, each = 2)), col = NA, lwd = 2, border = "forestgreen")
+
+polygon(c(lon,rev(lon)),c(rep(lat, each = 2)), col = NA, lwd = 2, border = "black")
 
 plot(GAMO_dem, xlim = lon, ylim = lat, col = gray.colors(3550), main = "Gamo Highlands Coring Locations")
+plot(ETHP_tree, add = TRUE, col = ESAtrsh_col, legend = FALSE, alpha = 0.5)
+plot(ETHP_grss, add = TRUE, col = ESAgrcp_col, legend = FALSE, alpha = 0.5)
+plot(ETHP_crop, add = TRUE, col = ESAcrop_col, legend = FALSE, alpha = 0.5)
 
 points(clong, clats, pch = 21, bg = "goldenrod")
 
