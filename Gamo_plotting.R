@@ -538,3 +538,19 @@ barplot(rev(CHO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Su
 barplot(rev(KAO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
 
 par(mfrow = c(1,1))
+
+#Pollen diagram
+
+
+
+CHO_pct = apply(CHO_counts, 1, function(x){
+  z = sum(x)
+  (x/z)*100
+})
+
+CHO_pct = CHO_pct[apply(CHO_counts, 2, sum) > 1,]
+
+plottR(t(CHO_pct), CHO_details, point_limit = 10, label_buffer = 25)
+
+
+
