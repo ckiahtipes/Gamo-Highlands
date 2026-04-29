@@ -454,103 +454,97 @@ plottR=function(x,y,
 
 #Data Read
 
-CHA <- read.csv("CHA.csv", header = TRUE)
-CHO <- read.csv("CHO.csv", header = TRUE)
-KAO <- read.csv("KAO.csv", header = TRUE)
+GAMO_all <- read.csv("GAMO_all.csv", header = TRUE) #Revised files
 
-#Replace NAs with 0s
+GAMO_LOI <- read.csv("GAMO_LOI.csv", header = TRUE)
 
-CHA[is.na(CHA) == TRUE] = 0
-CHO[is.na(CHO) == TRUE] = 0
-KAO[is.na(KAO) == TRUE] = 0
+#Parse LOI results with names
+
+LOI_cores = as.list(unique(GAMO_LOI$Core.ID))
+
+LOI_cores = LOI_cores[order(unique(GAMO_LOI$Core.ID))]
 
 #Isolate core details
 
-CHA_details = as.data.frame(t(CHA[CHA$CLASS == "00_CORE",4:ncol(CHA)]))
-CHO_details = as.data.frame(t(CHO[CHO$CLASS == "00_CORE",4:ncol(CHO)]))
-KAO_details = as.data.frame(t(KAO[KAO$CLASS == "00_CORE",4:ncol(KAO)]))
+GAMO_details = as.data.frame(t(GAMO_all[GAMO_all$CODE == "00_CORE", 6:ncol(GAMO_all)]))
 
 #Add new headers
 
-colnames(CHA_details) = CHA[1:6,3]
-colnames(CHO_details) = CHO[1:6,3]
-colnames(KAO_details) = KAO[1:6,3]
+colnames(GAMO_details) = GAMO_all[1:6,3]
+
 
 #Isolate counts
 
-CHA_counts = as.data.frame(t(CHA[CHA$CLASS != "00_CORE" & CHA$CLASS != "01_PTERID", 4:ncol(CHA)]))
-CHO_counts = as.data.frame(t(CHO[CHO$CLASS != "00_CORE" & CHO$CLASS != "01_PTERID", 4:ncol(CHO)]))
-KAO_counts = as.data.frame(t(KAO[KAO$CLASS != "00_CORE" & KAO$CLASS != "01_PTERID", 4:ncol(KAO)]))
+GAMO_counts = as.data.frame(t(GAMO_all[GAMO_all$CODE != "00_CORE" & GAMO_all$CODE != "01_PTERID", 6:ncol(GAMO_all)]))
 
 #Add new headers
 
-colnames(CHA_counts) = CHA[CHA$CLASS != "00_CORE" & CHA$CLASS != "01_PTERID" ,3]
-colnames(CHO_counts) = CHO[CHO$CLASS != "00_CORE" & CHO$CLASS != "01_PTERID" ,3]
-colnames(KAO_counts) = KAO[KAO$CLASS != "00_CORE" & KAO$CLASS != "01_PTERID" ,3]
-  
-##Cleanup stupid headers
+colnames(GAMO_counts) = GAMO_all[GAMO_all$CODE != "00_CORE" & GAMO_all$CODE != "01_PTERID", 3]
 
-#CHA_counts = CHA_counts[-1,]
-#CHO_counts = CHO_counts[-1,]
-#KAO_counts = KAO_counts[-1,]
+#Get rows for different cores
 
-#Now we do some basic plotting.
+cores = list("CHA", "KAO", "CHO")
 
-par(mfrow = c(1,3))
-
-plot(as.numeric(CHA_counts$Poaceae), as.numeric(CHA_details$depth)*-1, type = "l")
-lines(as.numeric(CHA_counts$Cyperaceae), CHA_details$depth, lty = 2)
-
-plot(as.numeric(CHO_counts$Poaceae), as.numeric(CHO_details$depth)*-1, type = "l")
-lines(as.numeric(CHO_counts$Cyperaceae), CHO_details$depth, lty = 2)
-
-plot(as.numeric(KAO_counts$Poaceae), as.numeric(KAO_details$depth)*-1, type = "l")
-lines(as.numeric(KAO_counts$Cyperaceae), KAO_details$depth, lty = 2)
-
-par(mfrow = c(1,1))
-
-#Pollen sums
-
-CHA_sum = apply(CHA_counts, 1, sum)
-CHO_sum = apply(CHO_counts, 1, sum)
-KAO_sum = apply(KAO_counts, 1, sum)
-
-#Concentrations
-
-par(mfrow = c(1,3))
-
-CHA_conc = ((CHA_details$LYCO_mean*CHA_details$LYCO_add)/CHA_details$weight)*(CHA_sum/CHA_details$LYCO_n)
-CHO_conc = ((CHO_details$LYCO_mean*CHO_details$LYCO_add)/CHO_details$weight)*(CHO_sum/CHO_details$LYCO_n)
-KAO_conc = ((KAO_details$LYCO_mean*KAO_details$LYCO_add)/KAO_details$weight)*(KAO_sum/KAO_details$LYCO_n)
-
-plot(CHA_conc, CHA_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentration per gram")
-plot(CHO_conc, CHO_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentration per gram")
-plot(KAO_conc, KAO_details$depth*-1, type = "l", xlab = "conc/g", main = "Pollen Concentration per gram")
-
-par(mfrow = c(1,1))
-
-#Barplots of pollen sums
-
-par(mfrow = c(1,3))
-
-barplot(rev(CHA_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
-barplot(rev(CHO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
-barplot(rev(KAO_sum), horiz = TRUE, las = 1, cex.names = 0.75, main = "Pollen Sum")
-
-par(mfrow = c(1,1))
-
-#Pollen diagram
-
-
-
-CHO_pct = apply(CHO_counts, 1, function(x){
-  z = sum(x)
-  (x/z)*100
+core_finder = lapply(cores, function(x){
+  grep(x, row.names(GAMO_counts))
 })
 
-CHO_pct = CHO_pct[apply(CHO_counts, 2, sum) > 1,]
+names(core_finder) = cores
 
-plottR(t(CHO_pct), CHO_details, point_limit = 10, label_buffer = 25)
+#Sums and Concentrations
 
+GAMO_sums = lapply(cores, function(x){
+  apply(GAMO_counts[core_finder[[x]],],1,sum)
+})
+
+names(GAMO_sums) = cores
+
+GAMO_conc = lapply(cores, function(x){
+  (GAMO_sums[[x]]/GAMO_details$LYCO_n[core_finder[[x]]])*((GAMO_details$LYCO_mean[core_finder[[x]]]*2)/(GAMO_details$weight_g[core_finder[[x]]]))
+})
+
+names(GAMO_conc) = cores
+
+conc_limit = lapply(cores, function(x){
+  ceiling(max(GAMO_conc[[x]]))
+})
+
+names(conc_limit) = cores
+
+#Simple plots
+
+spacer = 50
+
+plot(0, 0, axes = FALSE, ann = FALSE, pch = NA, xlim = c(-30,400), ylim = c(-160,0))
+
+axis(2, seq(0,-160,-20))
+
+for(i in 1:length(cores)){
+  lines(-1*(GAMO_LOI$l.o.i...TOM.[GAMO_LOI$Core.ID == LOI_cores[[i]]])+((i-1)*(100+spacer)), -1*GAMO_LOI$sample.depth_from[GAMO_LOI$Core.ID == LOI_cores[[i]]], lty = 2)
+  axis(3,at = c(-30,0)+((i-1)*(100+spacer)), labels = c(50,0), cex.axis = 0.8)
+}
+
+for(i in 1:length(cores)){
+  for(j in 1:length(core_finder[[i]])){
+    polygon(c(rep(100*(GAMO_conc[[i]][j]/conc_limit[[i]])+((i-1)*(100+spacer)),2),rep(0+((i-1)*(100+spacer)),2)),
+            -1*c(GAMO_details$depth[core_finder[[i]]][j]+2,GAMO_details$depth[core_finder[[i]]][j],GAMO_details$depth[core_finder[[i]]][j],GAMO_details$depth[core_finder[[i]]][j]+2),
+            col = "darkgrey")
+    
+  }
+  
+  for(j in 1:length(core_finder[[i]])){
+    polygon(c(rep(((100*(GAMO_conc[[i]][j]/conc_limit[[i]]))*(GAMO_details$IND[core_finder[[i]][j]]/GAMO_sums[[i]][j]))+((i-1)*(100+spacer)),2),rep(0+((i-1)*(100+spacer)),2)),
+            -1*c(GAMO_details$depth[core_finder[[i]]][j]+2,GAMO_details$depth[core_finder[[i]]][j],GAMO_details$depth[core_finder[[i]]][j],GAMO_details$depth[core_finder[[i]]][j]+2),
+            col = "black")
+  }
+  axis(1, at = c(0,100)+((i-1)*(100+spacer)), labels = c(0, conc_limit[[i]]), cex.axis = 0.8)
+}
+
+for(i in 1:length(cores)){
+  points(rep(0+((i-1)*(100+spacer)), length(core_finder[[i]])), -1*(GAMO_details$depth[core_finder[[i]]]+1), pch = 21, bg = "goldenrod")
+  text(50+((i-1)*(100+spacer)), 3, paste(cores[[i]]))
+}
+
+legend(350, -100, c("LOI%", "conc/g", "IND", "Pollen", "14C"), lty = c(2, NA, NA), pch = c(NA, 23, 23), pt.bg = c(NA, "darkgrey", "black"))
 
 
