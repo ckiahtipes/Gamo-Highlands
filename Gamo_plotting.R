@@ -452,11 +452,17 @@ plottR=function(x,y,
   
 } #Closing out function
 
+#Logical controls on plotting figs
+
+save_figs = TRUE
+
 #Data Read
 
 GAMO_all <- read.csv("GAMO_all.csv", header = TRUE) #Revised files
 
 GAMO_LOI <- read.csv("GAMO_LOI.csv", header = TRUE)
+
+GAMO_AMS <- read.csv("GAMO_AMS.csv", header = TRUE)
 
 #Parse LOI results with names
 
@@ -513,9 +519,14 @@ names(conc_limit) = cores
 
 #Simple plots
 
+if(save_figs == TRUE){
+  setEPS()
+  tiff("Figure-2_all-cores.tiff", height = 3000, width = 2500, res = 300)
+}
+
 spacer = 50
 
-plot(0, 0, axes = FALSE, ann = FALSE, pch = NA, xlim = c(-30,400), ylim = c(-160,0))
+plot(0, 0, axes = FALSE, ann = FALSE, pch = NA, xlim = c(-30,400), ylim = c(-180,0))
 
 axis(2, seq(0,-160,-20))
 
@@ -545,6 +556,66 @@ for(i in 1:length(cores)){
   text(50+((i-1)*(100+spacer)), 3, paste(cores[[i]]))
 }
 
-legend(350, -100, c("LOI%", "conc/g", "IND", "Pollen", "14C"), lty = c(2, NA, NA), pch = c(NA, 23, 23), pt.bg = c(NA, "darkgrey", "black"))
+for(i in 1:length(cores)){
+  points(rep(0+((i-1)*(100+spacer)), length(GAMO_AMS$Core[GAMO_AMS$Core==cores[[i]]])), -1*GAMO_AMS$depth.top..cm.[GAMO_AMS$Core==cores[[i]]], pch = 24, bg = "forestgreen")
+  text(rep(0+((i-1)*(100+spacer)+25), length(GAMO_AMS$Core[GAMO_AMS$Core==cores[[i]]])), -1*GAMO_AMS$depth.top..cm.[GAMO_AMS$Core==cores[[i]]],
+       paste0(GAMO_AMS$cal.BP.2sig[GAMO_AMS$Core==cores[[i]]]), cex = 0.8)
+}
+
+legend(310, -150, c("LOI%", "conc/g", "IND", "Pollen", "14C"), lty = c(2, NA, NA, NA, NA), pch = c(NA, 22, 22, 21, 24), pt.bg = c(NA, "darkgrey", "black", "goldenrod", "forestgreen"))
+
+if(save_figs == TRUE){
+  dev.off()
+}
+
+#Pollen Diagram by summed categories
+
+GAMO_taxa = GAMO_all[GAMO_all$CLASS != "Core",c(1:5)]
+GAMO_groups = unique(GAMO_taxa$CODE)
+group_names = unique(GAMO_taxa$ECOLOGY)
+
+CHO_counts = GAMO_counts[core_finder[["CHO"]],GAMO_taxa$CODE != "00_CORE"]
+CHO_detail = GAMO_details[core_finder[["CHO"]],GAMO_all$CODE == "00_CORE"]
+
+CHO_groups = matrix(nrow = nrow(CHO_counts), ncol = length(GAMO_groups))
+row.names(CHO_groups) = row.names(CHO_counts)
+colnames(CHO_groups) = GAMO_groups
+
+
+for(i in 1:length(GAMO_groups)){
+  n = CHO_counts[,GAMO_taxa$CODE == GAMO_groups[i]]
+  if(is.vector(n) == TRUE){
+    CHO_groups[,i] = n
+  } else {
+    CHO_groups[,i] = apply(n, 1, sum)
+  }
+}
+
+#Percents
+
+CHO_pct = (CHO_groups/GAMO_sums$CHO)*100
+
+#Set colors
+
+Ecol_colors = c("darkgreen", "lightblue", "goldenrod", "darkorange", "forestgreen", "gold", "black")
+
+#PlottR
+
+if(save_figs == TRUE){
+  setEPS()
+  tiff("Figure-4_CHO-.tiff", height = 2000, width = 3000, res = 300)
+}
+
+par(mar = c(5, 4, 4, 5) + 0.1)
+
+plottR(CHO_pct, CHO_detail, point_limit = 3, pl_colors = Ecol_colors, stem_labels = group_names, plot_title = "CHO Pollen %")
+
+if(save_figs == TRUE){
+  dev.off()
+}
+
+par(mar = c(5, 4, 4, 2) + 0.1)
+
+
 
 
