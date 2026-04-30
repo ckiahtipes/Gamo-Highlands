@@ -597,18 +597,20 @@ CHO_pct = (CHO_groups/GAMO_sums$CHO)*100
 
 #Set colors
 
-Ecol_colors = c("darkgreen", "lightblue", "goldenrod", "darkorange", "forestgreen", "gold", "black")
+Ecol_colors = c("forestgreen", "lightblue", "goldenrod", "darkorange", "darkgreen", "gold", "black")
 
 #PlottR
 
 if(save_figs == TRUE){
   setEPS()
-  tiff("Figure-4_CHO-.tiff", height = 2000, width = 3000, res = 300)
+  tiff("Figure-4_CHO-.tiff", height = 2200, width = 3000, res = 300)
 }
 
 par(mar = c(5, 4, 4, 5) + 0.1)
 
-plottR(CHO_pct, CHO_detail, point_limit = 3, pl_colors = Ecol_colors, stem_labels = group_names, plot_title = "CHO Pollen %")
+plottR(CHO_pct, CHO_detail, point_limit = 3, pl_colors = Ecol_colors, stem_labels = group_names, plot_title = "CHO Pollen %", label_buffer = 25)
+
+lines(c(0,210),c(-87,-87), lty = 3)
 
 if(save_figs == TRUE){
   dev.off()

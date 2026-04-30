@@ -15,6 +15,14 @@ save_figs = TRUE
 
 #Cores
 
+settl = c("Ochollo Mullato", "Garu Shongalle", "Acoma Lasha Chilashe")
+slats = c(6.460783, 6.383350, 6.433733)
+slong = c(37.653417,37.676950, 37.605600)
+
+villg = c("Gibe Mullato", "Mogesa Shonggalle", "Teka Chilashe")
+vlats = c(6.460950, 6.390867, 6.410983)
+vlong = c( 37.645467,  37.674267, 37.625767)
+
 cores = c("CHA", "CHO", "KAO")
 clats = c(6.465545, 6.388072, 6.416460)
 clong = c(37.643475, 37.668716, 37.633934)
@@ -111,15 +119,22 @@ topo_breaks = seq(0, 3000, 200)
 
 ETHP_topo = as.contour(ETHP_dem, levels = topo_breaks)
 
-legend(45, 14, c("Forest", "Savanna", "Cropland"), pch = c(22,22,22), pt.bg = c("#6c9575","#ffd731","darkred"), cex = 0.8)
+legend(45, 14, c("Forest", "Savanna", "Cropland"), pch = c(22,22,22), pt.bg = c("#6c9575","#ffd731","darkred"), cex = 0.5)
 
-plot(GAMO_dem, xlim = lon, ylim = lat, col = gray.colors(3550), main = "Gamo Highlands Coring Locations")
+plot(GAMO_dem, xlim = lon, ylim = lat, col = gray.colors(3550), main = "Gamo Highlands Coring Locations", legend = FALSE)
 plot(ETHP_tree, add = TRUE, col = ESAtrsh_col, legend = FALSE, alpha = 0.5)
 plot(ETHP_grss, add = TRUE, col = ESAgrcp_col, legend = FALSE, alpha = 0.5)
 plot(ETHP_crop, add = TRUE, col = ESAcrop_col, legend = FALSE, alpha = 0.5)
-plot(ETHP_topo, add = TRUE)
+plot(ETHP_topo, add = TRUE, lwd = 0.75, alpha = 0.5)
 
-points(clong, clats, pch = 21, bg = "goldenrod")
+points(clong, clats, pch = 21, bg = "skyblue", cex = 1.2)
+text(clong, clats+0.0175, cores)
+points(vlong, vlats, pch = 22, bg = "violet", cex = 1.2)
+#text(vlong-0.05, vlats, villg)
+points(slong, slats, pch = 23, bg = "white", cex = 1.2)
+#text(slong, slats-0.01, settl)
+
+legend(37.725, 6.58, c("Cores", "Settlement", "Historic Settlement"), pch = c(21, 22, 23), pt.bg = c("skyblue", "violet", "white"), cex = 0.5)
 
 if(save_figs == TRUE){
   dev.off()

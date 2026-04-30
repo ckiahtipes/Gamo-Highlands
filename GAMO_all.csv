@@ -22,31 +22,31 @@ SCROPHULARIACEAE,Dicot,Hedbergia-type (Hebenstretia),Terrestrial Herbs,03_TERRHE
 SCROPHULARIACEAE,Dicot,Striga,Terrestrial Herbs,03_TERRHERB,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 ACANTHACEAE,Dicot,Acanthaceae,Terrestrial Herbs,03_TERRHERB,0,1,0,1,0,0,0,3,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,3,0,0,0,0,0,0
 AMARANTHACEAE,Dicot,Amaranthaceae,Terrestrial Herbs,03_TERRHERB,2,2,1,5,2,2,1,2,0,0,0,10,1,0,1,1,2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0
-RANUNCULACEAE,Dicot,Clematis,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,4,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-ASTERACEAE,Dicot,Asteraceae (LS),Evergreen Shrubland and Steppe,04_STEPPE,1,4,3,4,1,3,10,1,1,0,4,1,2,0,1,0,0,0,0,0,0,10,0,0,0,0,1,0,0,0,0,0,0,0,0
-ASTERACEAE,Dicot,Asteraceae (HS),Evergreen Shrubland and Steppe,04_STEPPE,9,5,2,2,5,5,9,6,2,4,2,32,8,7,14,7,12,2,6,2,1,0,1,3,1,0,0,0,1,2,0,4,0,0,1
-COMPOSITAE,Dicot,Compositae,Evergreen Shrubland and Steppe,04_STEPPE,1,1,1,5,0,2,9,7,0,0,0,4,0,0,0,0,0,0,0,0,0,2,0,0,0,0,7,0,3,0,0,0,2,1,0
-ACANTHACEAE,Dicot,Justicia,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-ANACARDIACEAE,Dicot,Lannea,Evergreen Shrubland and Steppe,04_STEPPE,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-APIACEAE,Dicot,Apiaceae,Evergreen Shrubland and Steppe,04_STEPPE,0,4,4,0,1,3,4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-BURSERACEAE,Dicot,Commiphora,Evergreen Shrubland and Steppe,04_STEPPE,2,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CAPPARACEAE,Dicot,Capparis,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,2,0,8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-CARYOPHYLLACEAE,Dicot,Caryophyllaceae,Evergreen Shrubland and Steppe,04_STEPPE,0,1,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-EUPHORBIACEAE,Dicot,Ricinus,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,1,1,2,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-EUPHORBIACEAE,Dicot,"""Mallotus""",Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-FABACEAE,Dicot,Acacia,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-FABACEAE,Dicot,Erythrina-type,Evergreen Shrubland and Steppe,04_STEPPE,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-FABACEAE,Dicot,Senna/Chamaecrista,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-MYRTACEAE,Dicot,Eugenia,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-PASSIFLORACEAE,Dicot,Passifloraceae,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-SALVORADACEAE,Dicot,Salvadora?,Evergreen Shrubland and Steppe,04_STEPPE,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-SAPINDACEAE,Dicot,Dodonaea,Evergreen Shrubland and Steppe,04_STEPPE,2,3,5,4,0,2,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-SOLANACEAE,Dicot,Solanum,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-STERCULIACEAE,Dicot,Dombeya,Evergreen Shrubland and Steppe,04_STEPPE,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-TAMARICACEAE,Dicot,Tamarix,Evergreen Shrubland and Steppe,04_STEPPE,1,2,0,1,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-ULMACEAE,Dicot,Celtis,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-ZANTHOXYLEAE,Dicot,Zanthoxylum?,Evergreen Shrubland and Steppe,04_STEPPE,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-MYRTACEAE,Dicot,Syzygium,Evergreen Shrubland and Steppe,04_STEPPE,5,8,6,7,2,9,6,1,0,0,1,9,6,3,14,7,7,0,5,0,2,0,0,0,0,0,0,0,1,0,0,0,0,1,0
+RANUNCULACEAE,Dicot,Clematis,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,4,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ASTERACEAE,Dicot,Asteraceae (LS),Evergreen Shrubland,04_STEPPE,1,4,3,4,1,3,10,1,1,0,4,1,2,0,1,0,0,0,0,0,0,10,0,0,0,0,1,0,0,0,0,0,0,0,0
+ASTERACEAE,Dicot,Asteraceae (HS),Evergreen Shrubland,04_STEPPE,9,5,2,2,5,5,9,6,2,4,2,32,8,7,14,7,12,2,6,2,1,0,1,3,1,0,0,0,1,2,0,4,0,0,1
+COMPOSITAE,Dicot,Compositae,Evergreen Shrubland,04_STEPPE,1,1,1,5,0,2,9,7,0,0,0,4,0,0,0,0,0,0,0,0,0,2,0,0,0,0,7,0,3,0,0,0,2,1,0
+ACANTHACEAE,Dicot,Justicia,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ANACARDIACEAE,Dicot,Lannea,Evergreen Shrubland,04_STEPPE,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+APIACEAE,Dicot,Apiaceae,Evergreen Shrubland,04_STEPPE,0,4,4,0,1,3,4,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+BURSERACEAE,Dicot,Commiphora,Evergreen Shrubland,04_STEPPE,2,0,0,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CAPPARACEAE,Dicot,Capparis,Evergreen Shrubland,04_STEPPE,0,0,0,0,2,0,8,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+CARYOPHYLLACEAE,Dicot,Caryophyllaceae,Evergreen Shrubland,04_STEPPE,0,1,0,0,1,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+EUPHORBIACEAE,Dicot,Ricinus,Evergreen Shrubland,04_STEPPE,0,0,0,1,1,2,2,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+EUPHORBIACEAE,Dicot,"""Mallotus""",Evergreen Shrubland,04_STEPPE,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+FABACEAE,Dicot,Acacia,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+FABACEAE,Dicot,Erythrina-type,Evergreen Shrubland,04_STEPPE,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+FABACEAE,Dicot,Senna/Chamaecrista,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+MYRTACEAE,Dicot,Eugenia,Evergreen Shrubland,04_STEPPE,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+PASSIFLORACEAE,Dicot,Passifloraceae,Evergreen Shrubland,04_STEPPE,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SALVORADACEAE,Dicot,Salvadora?,Evergreen Shrubland,04_STEPPE,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SAPINDACEAE,Dicot,Dodonaea,Evergreen Shrubland,04_STEPPE,2,3,5,4,0,2,0,0,0,0,2,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+SOLANACEAE,Dicot,Solanum,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+STERCULIACEAE,Dicot,Dombeya,Evergreen Shrubland,04_STEPPE,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+TAMARICACEAE,Dicot,Tamarix,Evergreen Shrubland,04_STEPPE,1,2,0,1,1,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ULMACEAE,Dicot,Celtis,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+ZANTHOXYLEAE,Dicot,Zanthoxylum?,Evergreen Shrubland,04_STEPPE,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+MYRTACEAE,Dicot,Syzygium,Evergreen Shrubland,04_STEPPE,5,8,6,7,2,9,6,1,0,0,1,9,6,3,14,7,7,0,5,0,2,0,0,0,0,0,0,0,1,0,0,0,0,1,0
 PODOCARPACEAE,Conifer,Podocarpus,Afromontane Forests,05_AFROMONT,1,5,0,1,4,2,1,1,0,0,0,2,4,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0
 CUPRESSACEAE,Conifer,Juniperus,Afromontane Forests,05_AFROMONT,0,16,5,4,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 AQUIFOLIACEAE,Dicot,Ilex,Afromontane Forests,05_AFROMONT,1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
